@@ -3,7 +3,7 @@ Created on May 21, 2013
 
 @author: pshu
 '''
-import matplotlib.pyplot as plot
+#import matplotlib.pyplot as plot
 # from pylab import hist,plot
 
 if __name__ == '__main__':
@@ -31,8 +31,22 @@ if __name__ == '__main__':
     print "new ratio", new_lines*1.0/total_line_num
     
 #     print line_rep
+
+    head_str = """{"name":"CodeFacec", "children":[\n"""
+ 
+
+    outfile = open('category_ratio.json','w')
+    outfile.write(head_str)
     
+    for item in line_rep:
+        if item[0] <middle_rep:
+            outfile.write("""\t,{"name":"O","size":%f}\n""" %(item[1]*1.0/total_line_num) )
+        else:
+            outfile.write("""\t,{"name":"N","size":%f}\n""" %(item[1]*1.0/total_line_num) )
     
+    outfile.write(""" ]}""")
+    
+    outfile.close();
     print lines[0]*1.0/total_line_num
     
 #     plot.bar(reps,lines)
