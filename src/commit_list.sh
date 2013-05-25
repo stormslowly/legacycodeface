@@ -1,17 +1,15 @@
 #!/bin/sh
 
-
-
-
 > .blames.log
 
-for f in `svn ls $0`
-do
+echo $1
 
-	svn blame $f -v >> .blames.log
+for f in `svn ls $1 -R`
+do
+	echo 'blaming '$f
+	svn blame $1'/'$f -v | awk '{print substr($3,0,4)}' >> .blames.log
 done
 
+cat .blames.log | sort -n | uniq -c > pie.txt
 
-
-
-cat .blames.log |  awk '{print $1, $2}'  | sort  -n | uniq -c
+python draw_pie.py
