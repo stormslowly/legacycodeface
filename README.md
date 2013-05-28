@@ -16,4 +16,4 @@ it takes time according your repo size and history
 
 the output will be 
 
-![image](https://github.com/stormslowly/legacycodeface/tree/master/example/output.png)
+![image](https://raw.github.com/stormslowly/legacycodeface/master/example/output.png)
